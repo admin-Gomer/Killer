@@ -33,7 +33,7 @@ module.exports = async (client, m) => {
   initDB(m);
   antilink(client, m);
 
-  const prefa = ['.', '!', '#', '/']
+  const prefa = ['#']
   const prefix = prefa.find((p) => body.startsWith(p))
   if (!prefix) return
 
@@ -83,19 +83,19 @@ module.exports = async (client, m) => {
   const h = chalk.bold.blue("************************************");
   const v = chalk.bold.white("*");
   const date = chalk.bold.yellow(
-    `\n${v} Fecha: ${chalk.whiteBright(moment().format("DD/MM/YY HH:mm:ss"))}`,
+    `\n${v} Дата: ${chalk.whiteBright(moment().format("DD/MM/YY HH:mm:ss"))}`,
   );
   const userPrint = chalk.bold.blueBright(
-    `\n${v} Usuario: ${chalk.whiteBright(pushname)}`,
+    `\n${v} Пользователь: ${chalk.whiteBright(pushname)}`,
   );
   const senderPrint = chalk.bold.magentaBright(
-    `\n${v} Remitente: ${gradient("deepskyblue", "darkorchid")(sender)}`,
+    `\n${v} Отправитель: ${gradient("deepskyblue", "darkorchid")(sender)}`,
   );
   const groupPrint = m.isGroup
     ? chalk.bold.cyanBright(
-        `\n${v} Grupo: ${chalk.greenBright(groupName)}\n${v} ID: ${gradient("violet", "midnightblue")(from)}\n`,
+        `\n${v} Группа: ${chalk.greenBright(groupName)}\n${v} ID: ${gradient("violet", "midnightblue")(from)}\n`,
       )
-    : chalk.bold.greenBright(`\n${v} Chat privado\n`);
+    : chalk.bold.greenBright(`\n${v} Приватный чат\n`);
   console.log(`\n${h}${date}${userPrint}${senderPrint}${groupPrint}${h}`);
 
   if (global.comandos.has(command)) {
@@ -117,10 +117,10 @@ module.exports = async (client, m) => {
     try {
       await cmdData.run(client, m, args, { text });
     } catch (error) {
-      console.error(chalk.red(`Error ejecutando comando ${command}:`), error);
+      console.error(chalk.red(`Ошибка при выполнении команды ${command}:`), ошибка);
       await client.sendMessage(
         m.chat,
-        { text: "Error al ejecutar el comando" },
+        { text: "Ошибка при выполнении команды" },
         { quoted: m },
       );
     }
@@ -132,7 +132,7 @@ fs.watchFile(mainFile, () => {
   fs.unwatchFile(mainFile);
   console.log(
     chalk.yellowBright(
-      `\nSe actualizó ${path.basename(__filename)}, recargando...`,
+      `\nОбновлено ${path.basename(__filename)}, Подзарядки...`,
     ),
   );
   delete require.cache[mainFile];
