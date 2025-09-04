@@ -1,15 +1,15 @@
 module.exports = {
-  command: ["kick", "kill", "matar", "sacar"],
-  description: "Expulsa a un miembro del grupo",
-  category: "groups",
+  command: ["удалить", "kick", "удалить", "удалить"],
+  description: "Исключение участника из группы",
+  category: "Группы",
   isGroup: true,
   isAdmin: true,
   botAdmin: true,
-  use: "(@0 o responder a un mensaje)",
+  use: "(@0 или ответить на сообщение)",
   run: async (client, m, args) => {
     if (!m.mentionedJid[0] && !m.quoted) {
       return m.reply(
-        "Etiqueta o responde al *mensaje* de la *persona* que quieres eliminar",
+        "_Отметьте или ответьте на_ *сообщение* _человека, которого вы хотите_ `удалить`",
       );
     }
 
@@ -21,23 +21,23 @@ module.exports = {
     const ownerBot = global.owner[0][0] + "@s.whatsapp.net";
 
     if (user === client.decodeJid(client.user.id)) {
-      return m.reply("No puedo eliminar al *bot* del grupo");
+      return m.reply("_Я не могу удалить_ *бота* _из группы_");
     }
 
     if (user === ownerGroup) {
-      return m.reply("No puedo eliminar al *propietario* del grupo");
+      return m.reply("_Я не могу удалить_ *владельца* _из группы_");
     }
 
     if (user === ownerBot) {
-      return m.reply("No puedo eliminar al *propietario* del bot");
+      return m.reply("_Я не могу удалить бота_ *владелец*");
     }
 
     try {
       await client.groupParticipantsUpdate(m.chat, [user], "remove");
-      m.reply(`Usuario *eliminado* correctamente`);
+      m.reply(`_Пользователь_ *удален* _успешно_`);
     } catch (e) {
       console.error(e);
-      m.reply("No se pudo eliminar al usuario");
+      m.reply("_Не удалось удалить пользователя_");
     }
   },
 };
