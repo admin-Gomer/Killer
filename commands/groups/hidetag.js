@@ -1,12 +1,12 @@
 const { generateWAMessageFromContent } = require("@whiskeysockets/baileys");
 
 module.exports = {
-  command: ["hidetag", "tag"],
-  description: "Menciona a todos sin mostrar los @",
-  category: "groups",
+  command: ["вызов", "tag", "hidetag"],
+  description: "Упомяните всех, не показывая @",
+  category: "Группы",
   isGroup: true,
   isAdmin: true,
-  use: "(*ingresa* o responde a un *texto*",
+  use: "(*войдите* _или ответьте на_ *текст*",
   run: async (client, m, args) => {
     const text = args.join(" ");
     const groupMetadata = m.isGroup
@@ -17,7 +17,7 @@ module.exports = {
     const mentions = groupParticipants.map((jid) => client.decodeJid(jid));
 
     if (!m.quoted && !text) {
-      return m.reply(`*Ingresa* un texto o *responde* a uno`);
+      return m.reply(`*Введите* _текст или_ *ответить* _на одно из них_`);
     }
 
     const q = m.quoted ? m.quoted : m;
@@ -80,7 +80,7 @@ module.exports = {
       );
     } catch (e) {
       console.error(e);
-      return m.reply("Error al enviar el mensaje con tag\n\n" + e);
+      return m.reply("_Ошибка при отправке помеченного сообщения_\n\n" + e);
     }
   },
 };
