@@ -3,23 +3,23 @@ const { pickRandom } = require("../../lib/message");
 const { version } = require("../../package.json");
 
 module.exports = {
-  command: ["help", "ayuda", "menu"],
-  description: "Muestra los comandos",
-  category: "general",
+  command: ["меню", "help", "menu"],
+  description: "Отображение команд",
+  category: "Общее",
   run: async (client, m, args) => {
     const cmds = [...global.comandos.values()];
 
     const jam = moment.tz("America/Mexico_City").format("HH:mm:ss");
     const ucapan =
       jam < "05:00:00"
-        ? "Buen día"
+        ? "Добрый день"
         : jam < "11:00:00"
-          ? "Buen día"
+          ? "Добрый день "
           : jam < "15:00:00"
-            ? "Buenas tardes"
+            ? "Добрый день"
             : jam < "19:00:00"
-              ? "Buenas tardes"
-              : "Buenas noches";
+              ? "Добрый день"
+              : "Спокойной ночи";
 
     const fkontak = {
       key: {
@@ -47,14 +47,14 @@ module.exports = {
       }
     });
 
-    let menu = `╭───❮ *Menú de comandos* ❯───╮
+    let menu = `╭─❮ *Меню команд* ❯─╮
 │
-│  ${ucapan}, *${m.pushName || "Usuario"}*
+│  ${ucapan}, *${m.pushName || "Пользователь"}*
 │
-│  *Mini Lurus*
-│  Creador  : +52 33 3232 9453
-│  Versión  : ${version}
-│  Motor    : Baileys
+│  *Мини Лурус*
+│  Создатель  : +79520830782 
+│  Версия  : ${version}
+│  Двигатель    : Baileys
 │
 `;
 
@@ -62,17 +62,17 @@ module.exports = {
       const catName = cat.charAt(0).toUpperCase() + cat.slice(1);
       menu += `│─── *${catName}*\n`;
       commands.forEach((cmd) => {
-        menu += `│  !${cmd.command[0]}\n`;
+        menu += `│  #${cmd.command[0]}\n`;
       });
       menu += `│\n`;
     }
 
-    menu += `╰─────────────────────╯`;
+    menu += `╰────────────────╯`;
 
     await client.sendMessage(
       m.chat,
       {
-        image: { url: "https://i.ibb.co/P0VXh06/5faea421e58b.jpg" },
+        image: { url: "https://ibb.co/p6rqCtSV" },
         caption: menu,
       },
       { quoted: fkontak },
