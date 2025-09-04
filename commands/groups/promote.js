@@ -1,9 +1,9 @@
 const { resolveLidToRealJid } = require("../../lib/utils");
 
 module.exports = {
-  command: ["promote", "ascender", "daradmin"],
-  description: "Ascende un usuario a administrador del grupo",
-  category: "groups",
+  command: ["повысить", "ascender", "daradmin"],
+  description: "Повышение уровня пользователя до администратора группы",
+  category: "Группы",
   use: "@0",
   isGroup: true,
   isAdmin: true,
@@ -35,16 +35,16 @@ module.exports = {
     } else if (m.quoted) {
       target = await resolveLidToRealJid(m.quoted.sender, client, m.chat);
     } else {
-      return m.reply("*Etiquete* al *usuario* que desea *ascender*");
+      return m.reply("*Отметьте* *пользователя*, _которого вы хотите_ *продвигать* _в админы._");
     }
 
     try {
       await client.groupParticipantsUpdate(m.chat, [target], "promote");
-      m.reply(`*@${target.split("@")[0]}* ha sido ascendido a administrador`, {
+      m.reply(`*@${target.split("@")[0]}* _был повышен в должности администратора_`, {
         mentions: [target],
       });
     } catch (e) {
-      m.reply("No se pudo ascender al administrador");
+      m.reply("_Администратор не может быть повышен_");
     }
   },
 };
