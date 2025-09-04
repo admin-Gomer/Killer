@@ -28,9 +28,9 @@ function reloadCommands(dir = path.join(__dirname, "..")) {
 
 module.exports = {
   command: ["update", "actualizar"],
-  description: "Actualiza desde GitHub",
+  description: "Обновление с GitHub",
   isOwner: true,
-  category: "owner",
+  category: "Владелец",
   run: async (client, m, args, from, isCreator) => {
     const { exec } = require("child_process");
     const baseDir = path.join(__dirname, "..");
@@ -38,10 +38,10 @@ module.exports = {
     exec("git pull", (error, stdout, stderr) => {
       reloadCommands(baseDir);
       let msg = "";
-      if (stdout.includes("Already up to date.")) {
-        msg = "*Estado:* Todo está actualizado";
+      if (stdout.includes("Уже в актуальном состоянии.")) {
+        msg = "*Статус:* Все в курсе последних событий";
       } else {
-        msg = `*Actualización completada*\n\n${stdout}`;
+        msg = `*Обновление завершено*\n\n${stdout}`;
       }
       client.sendMessage(m.key.remoteJid, { text: msg }, { quoted: m });
     });
