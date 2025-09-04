@@ -1,9 +1,9 @@
 const fs = require("fs");
 
 module.exports = {
-  command: ["sticker", "s"],
-  description: "Crea una imagen a sticker",
-  category: "stickers",
+  command: ["с", "s", "stickers"],
+  description: "Создание изображения со стикером",
+  category: "стикер",
   run: async (client, m) => {
     const quoted = m.quoted || m;
     const mime = (quoted.msg || quoted).mimetype || "";
@@ -16,8 +16,8 @@ module.exports = {
       year: "numeric",
     });
 
-    let stickerTxT = "Lurus";
-    let stickerTxT2 = "Stickers";
+    let stickerTxT = "꧁☠︎︎🅼🅸🅺🅷🅰︎🅸🅻☠︎︎꧂";
+    let stickerTxT2 = "";
 
     if (/image/.test(mime)) {
       media = await quoted.download();
@@ -28,7 +28,7 @@ module.exports = {
       await fs.unlinkSync(encmedia);
     } else if (/video/.test(mime)) {
       if ((quoted.msg || quoted).seconds > 20) {
-        return m.reply("El video no puede ser muy largo");
+        return m.reply("Видео не может быть слишком длинным");
       }
       media = await quoted.download();
 
@@ -39,7 +39,7 @@ module.exports = {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       await fs.unlinkSync(encmedia);
     } else {
-      m.reply("Envía una *imagen* o *video* junto con el comando !s");
+      m.reply("_Отправьте_ *изображение* _или_ *видео* _вместе с командой_ `#с` ");
     }
   },
 };
