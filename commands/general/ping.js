@@ -1,14 +1,14 @@
 const moment = require("moment");
 
 module.exports = {
-  command: ["ping"],
-  description: "Chequea la conexión y muestra info del bot",
-  category: "general",
+  command: ["пинг", "ping"],
+  description: "Проверьте подключение и отобразите информацию о боте",
+  category: "Общее",
   run: async (client, m, args, { prefix }) => {
     const start = Date.now();
     const tempMsg = await client.sendMessage(
       m.key.remoteJid,
-      { text: "⏰ Cargando ping..." },
+      { text: "⏰ Пинг загрузки..." },
       { quoted: m },
     );
     const latency = Date.now() - start;
@@ -19,17 +19,17 @@ module.exports = {
       s = Math.floor(up % 60);
     const ram = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2);
 
-    const userTag = m.pushName || "Invitado";
+    const userTag = m.pushName || "Гость";
     const sender = m.sender.replace(/@.+/, "");
 
-    const msg = `Hola, ${userTag}
+    const msg = `Привет, ${userTag}
 
-\`Ping Status\`
+\`Статус пинга\`
 
-\`Ping:\` ${latency} ms
-\`Uptime:\` [ ${h}h ${min}m ${s}s ]
-\`RAM usada:\` ${ram} MB
-\`Usuario ID:\` @${sender}`.trim();
+\`Гудение:\` ${latency} ms
+\`Время безотказной работы:\` [ ${h}h ${min}m ${s}s ]
+\`RAM Использованный:\` ${ram} MB
+\`Пользователь ID:\` @${sender}`.trim();
 
     await client.sendMessage(
       m.chat,
