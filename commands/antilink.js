@@ -29,7 +29,7 @@ module.exports = async (client, m) => {
       if (isGcLink) {
         return client.sendMessage(
           m.chat,
-          { text: `El enlace *pertenece* a este grupo` },
+          { text: `_Ссылка_ *принадлежит* _этой группе_` },
           { quoted: m },
         );
       }
@@ -46,7 +46,7 @@ module.exports = async (client, m) => {
       client.sendMessage(
         m.chat,
         {
-          text: `Anti Enlaces\n\n@${m.sender.split("@")[0]} mandaste un enlace *prohibido*`,
+          text: `АНТИССЫЛКА \n\n@${m.sender.split("@")[0]} Вы отправили *запрещенную* ссылку`,
           contextInfo: { mentionedJid: [m.sender] },
         },
         { quoted: m },
