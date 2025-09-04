@@ -1,4 +1,4 @@
-## Mini Lurus
+## Killer
 > Простая версия Lurus Bot, созданная в качестве основы для разработчиков, которые хотят запустить собственного бота WhatsApp с нуля.
 
 <p align="center">
@@ -38,7 +38,7 @@
 ```bash
 apt install git -y
 apt install nodejs -y
-git clone https://github.com/AzamiJs/Mini_WaBot.git
-cd Mini_WaBot
+git clone https://github.com/admin-Gomer/Killer.git
+cd Killer
 npm install
 node index.js
