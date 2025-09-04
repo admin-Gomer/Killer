@@ -1,9 +1,9 @@
 const { resolveLidToRealJid } = require("../../lib/utils");
 
 module.exports = {
-  command: ["demote", "degradar", "quitaradmin"],
-  description: "Degrada a un administrador en el grupo",
-  category: "groups",
+  command: ["понизить", "degradar", "quitaradmin"],
+  description: "Понизить уровень администратора в группе",
+  category: "Группы",
   use: "@0",
   isGroup: true,
   isAdmin: true,
@@ -35,17 +35,17 @@ module.exports = {
     } else if (m.quoted) {
       target = await resolveLidToRealJid(m.quoted.sender, client, m.chat);
     } else {
-      return m.reply("*Etiquete* al *administrador* que desea *degradar*");
+      return m.reply("*Отметьте* *админа*, _которого вы хотите_ *понизить* _в должности._");
     }
 
     try {
       await client.groupParticipantsUpdate(m.chat, [target], "demote");
-      m.reply(`*@${target.split("@")[0]}* ha sido degradado de administrador`, {
+      m.reply(`*@${target.split("@")[0]}* _был понижен в должности с администратора_`, {
         mentions: [target],
       });
     } catch (e) {
       m.reply(
-        "No se pudo degradar al administrador, verifica permisos o que el usuario sea admin",
+        "_Не удалось понизить уровень администратора, подтвердить разрешения или подтвердить, что пользователь является администратором_",
       );
     }
   },
