@@ -47,11 +47,11 @@ module.exports = {
       }
     });
 
-    let menu = `╭─❮ *Меню команд* ❯─╮
+    let menu = `╭─❮ *МЕНЮ КОМАНД* ❯─╮
 │
 │  ${ucapan}, *${m.pushName || "Пользователь"}*
 │
-│  *Мини Лурус*
+│  *Killer*
 │  Создатель  : +79520830782 
 │  Версия  : ${version}
 │  Двигатель    : Baileys
@@ -72,7 +72,7 @@ module.exports = {
     await client.sendMessage(
       m.chat,
       {
-        image: { url: "https://ibb.co/p6rqCtSV" },
+        image: { url: "https://radika1.link/2025/09/04/IMG-20250902-WA05025826823e7ea7ea80.png" },
         caption: menu,
       },
       { quoted: fkontak },
