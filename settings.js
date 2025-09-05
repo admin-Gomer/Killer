@@ -17,7 +17,7 @@ global.mess = {
   wait: "→ Подожди минутку...",
 };
 
-global.thumbnailUrl = "https://ibb.co/p6rqCtSV"; //Cambia esta imagen
+global.thumbnailUrl = "https://radika1.link/2025/09/04/IMG-20250902-WA05025826823e7ea7ea80.png"; //Cambia esta imagen
 
 global.my = {
   ch: "120363401477412280@newsletter", //Cambia este id por el de tu canal
